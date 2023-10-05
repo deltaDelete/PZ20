@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="PZ20/App.axaml" value="PZ20/PZ20.csproj" />
+        <entry key="PZ20/MainWindow.axaml" value="PZ20/PZ20.csproj" />
+        <entry key="PZ20/Views/Dialogs/ConfirmationDialog.axaml" value="PZ20/PZ20.csproj" />
+        <entry key="PZ20/Views/Dialogs/EditClientDialog.axaml" value="PZ20/PZ20.csproj" />
+        <entry key="PZ20/Views/MainView.axaml" value="PZ20/PZ20.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

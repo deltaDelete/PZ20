@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:PZ20.Models"
+        WindowStartupLocation="CenterOwner"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PZ20.Views.Dialogs.EditClientDialog"
+        x:DataType="models:Client"
+        Title="EditUserDialog">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Фамилия" />
+        <TextBox Text="{Binding LastName}" HorizontalAlignment="Stretch"  Grid.Column="1" Grid.Row="0"/>
+        <TextBlock Text="Имя" Grid.Row="1"/>
+        <TextBox Text="{Binding FirstName}" HorizontalAlignment="Stretch"  Grid.Column="1" Grid.Row="1"/>
+        <TextBlock Text="Пол" Grid.Row="2"/>
+        <ComboBox SelectedIndex="{Binding GenderId}" SelectedItem="{Binding Gender}" 
+                  Name="GenderBox" 
+                  Grid.Column="1"
+                  Grid.Row="2"
+                  HorizontalAlignment="Stretch">
+            <ComboBox.ItemTemplate>
+                <DataTemplate x:DataType="models:Gender">
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button Content="Отмена" IsCancel="True" Click="CancelClick" Grid.Row="3"/>
+        <Button Content="Сохранить" IsDefault="True" Click="ConfirmClick" Grid.Row="3" Grid.Column="1"/>
+    </Grid>
+</Window>

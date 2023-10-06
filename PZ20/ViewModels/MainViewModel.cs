@@ -14,7 +14,7 @@ namespace PZ20.ViewModels;
 public class MainViewModel : ViewModelBase {
     private readonly Window _view;
     private string _searchQuery = string.Empty;
-    private ObservableCollection<Client> _items = new();
+    private BindingList<Client> _items = new();
     private List<Client> _itemsFull;
     private int _selectedSearchColumn;
     private bool _isSortByDescending = false;
@@ -51,13 +51,9 @@ public class MainViewModel : ViewModelBase {
         }
     }
 
-    public ObservableCollection<Client> Items {
+    public BindingList<Client> Items {
         get => _items;
-        set {
-            if (Equals(value, _items)) return;
-            _items = value;
-            RaisePropertyChanged();
-        }
+        set => SetField(ref _items, value);
     }
 
     public int Take {
@@ -150,7 +146,7 @@ public class MainViewModel : ViewModelBase {
         }
 
         var filtered = SearchQuery == ""
-            ? new ObservableCollection<Client>(_itemsFull)
+            ? _itemsFull
             : SelectedSearchColumn switch {
                 1 => _itemsFull
                     .Where(it => it.ClientId.ToString().Contains(SearchQuery)),
@@ -253,7 +249,7 @@ public class MainViewModel : ViewModelBase {
 
         if (Items.Contains(prevItem)) {
             var index = Items.IndexOf(prevItem);
-            Items.ReplaceItem(prevItem, newItem);
+            Items[index] = newItem;
         }
     }
 
@@ -274,29 +270,29 @@ public class MainViewModel : ViewModelBase {
 
     private void TakeNext() {
         Skip += Take;
-        Items = new ObservableCollection<Client>(
-            Filtered.Skip(Skip).Take(Take)
+        Items = new(
+            Filtered.Skip(Skip).Take(Take).ToList()
         );
     }
 
     private void TakePrev() {
         Skip -= Take;
-        Items = new ObservableCollection<Client>(
-            Filtered.Skip(Skip).Take(Take)
+        Items = new(
+            Filtered.Skip(Skip).Take(Take).ToList()
         );
     }
 
     private void TakeFirst() {
         Skip = 0;
-        Items = new ObservableCollection<Client>(
-            Filtered.Take(Take)
+        Items = new(
+            Filtered.Take(Take).ToList()
         );
     }
 
     private void TakeLast() {
         Skip = Filtered.Count - Take;
-        Items = new ObservableCollection<Client>(
-            Filtered.TakeLast(Take)
+        Items = new(
+            Filtered.TakeLast(Take).ToList()
         );
     }
 

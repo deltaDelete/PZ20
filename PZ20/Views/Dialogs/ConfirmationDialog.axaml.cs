@@ -19,6 +19,7 @@ public partial class ConfirmationDialog : Window {
         _positiveClick = positiveClick;
         _negativeClick = negativeClick;
         InitializeComponent();
+        Title = headerText;
         Header.Text = headerText;
         Description.Text = descriptionText;
     }

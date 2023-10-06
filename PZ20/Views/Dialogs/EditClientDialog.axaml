@@ -4,38 +4,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:models="clr-namespace:PZ20.Models"
         WindowStartupLocation="CenterOwner"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="288" d:DesignHeight="204"
+        MinWidth="288"
+        MinHeight="204"
+        Width="288"
+        Height="204"
         x:Class="PZ20.Views.Dialogs.EditClientDialog"
         x:DataType="models:Client"
-        Title="EditUserDialog">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <TextBlock Text="Фамилия" />
-        <TextBox Text="{Binding LastName}" HorizontalAlignment="Stretch"  Grid.Column="1" Grid.Row="0"/>
-        <TextBlock Text="Имя" Grid.Row="1"/>
-        <TextBox Text="{Binding FirstName}" HorizontalAlignment="Stretch"  Grid.Column="1" Grid.Row="1"/>
-        <TextBlock Text="Пол" Grid.Row="2"/>
-        <ComboBox SelectedIndex="{Binding GenderId}" SelectedItem="{Binding Gender}" 
-                  Name="GenderBox" 
-                  Grid.Column="1"
-                  Grid.Row="2"
-                  HorizontalAlignment="Stretch">
-            <ComboBox.ItemTemplate>
-                <DataTemplate x:DataType="models:Gender">
-                    <TextBlock Text="{Binding Name}" />
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <Button Content="Отмена" IsCancel="True" Click="CancelClick" Grid.Row="3"/>
-        <Button Content="Сохранить" IsDefault="True" Click="ConfirmClick" Grid.Row="3" Grid.Column="1"/>
-    </Grid>
+        Title="Изменить клиента">
+    <StackPanel Spacing="15"
+                Orientation="Vertical" 
+                Margin="15"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch">
+        <StackPanel Spacing="8" Orientation="Horizontal">
+            <TextBlock Text="Фамилия" TextAlignment="End" Width="128"/>
+            <TextBox Text="{Binding LastName}" HorizontalAlignment="Stretch" MinWidth="128" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Spacing="8">
+            <TextBlock Text="Имя" TextAlignment="End" Width="128"/>
+            <TextBox Text="{Binding FirstName}" HorizontalAlignment="Stretch" MinWidth="128" />
+        </StackPanel>
+        <StackPanel Spacing="8" Orientation="Horizontal">
+            <TextBlock Text="Пол" TextAlignment="End" Width="128"/>
+            <ComboBox SelectedIndex="{Binding GenderId}" SelectedItem="{Binding Gender}"
+                      MinWidth="128"
+                      Name="GenderBox"
+                      HorizontalAlignment="Stretch">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate x:DataType="models:Gender">
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Spacing="8" Orientation="Horizontal">
+            <Button Content="Отмена" IsCancel="True" Click="CancelClick" MinWidth="128"/>
+            <Button Content="Сохранить" IsDefault="True" Click="ConfirmClick" MinWidth="128"/>
+        </StackPanel>
+    </StackPanel>
 </Window>

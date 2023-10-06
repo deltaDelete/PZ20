@@ -2,11 +2,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="288" d:DesignHeight="204"
+        MinWidth="288"
+        MinHeight="204"
+        Width="288"
+        Height="204"
         x:Class="PZ20.Views.Dialogs.ConfirmationDialog"
         WindowStartupLocation="CenterOwner"
         Title="ConfirmationDialog">
-    <StackPanel Orientation="Vertical" Spacing="15" HorizontalAlignment="Stretch" Margin="15">
+    <StackPanel Orientation="Vertical"
+                Spacing="15" 
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="15">
         <TextBlock Name="Header" FontSize="18" FontWeight="Bold" />
         <TextBlock Name="Description" />
         <StackPanel Orientation="Horizontal" Spacing="8">

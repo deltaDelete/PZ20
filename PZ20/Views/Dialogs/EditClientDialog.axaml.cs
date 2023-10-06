@@ -9,10 +9,11 @@ namespace PZ20.Views.Dialogs;
 public partial class EditClientDialog : Window {
     private readonly Action<Client> _confirmAction;
 
-    public EditClientDialog(Client client, Action<Client> confirmAction) {
+    public EditClientDialog(Client client, Action<Client> confirmAction, string title = "") {
         _confirmAction = confirmAction;
         InitializeComponent();
         DataContext = client;
+        Title = title;
         InitializeGenderBox();
     }
 

@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Avalonia.Controls;
-using Avalonia.Rendering;
 using Avalonia.Threading;
 using PZ20.Models;
 using PZ20.Views.Dialogs;
@@ -236,10 +234,27 @@ public class MainViewModel : ViewModelBase {
                 client.GenderId = client.Gender!.GenderId;
                 await db.UpdateAsync(client.ClientId, client);
                 // GetDataFromDb();
-                _itemsFull.Remove(arg);
-                _itemsFull.Add(client);
-            }
+                ReplaceItem(arg, client);
+            },
+            "Изменить клиента"
         ).ShowDialog(_view);
+    }
+
+    private void ReplaceItem(Client prevItem, Client newItem) {
+        if (Filtered.Contains(prevItem)) {
+            var index = Filtered.IndexOf(prevItem);
+            Filtered[index] = newItem;
+        }
+
+        if (_itemsFull.Contains(prevItem)) {
+            var index = _itemsFull.IndexOf(prevItem);
+            _itemsFull[index] = newItem;
+        }
+
+        if (Items.Contains(prevItem)) {
+            var index = Items.IndexOf(prevItem);
+            Items.ReplaceItem(prevItem, newItem);
+        }
     }
 
     private async Task NewItem() {
@@ -252,7 +267,8 @@ public class MainViewModel : ViewModelBase {
                 // GetDataFromDb();
                 client.ClientId = newItemId;
                 _itemsFull.Add(client);
-            }
+            },
+            "Добавить клиента"
         ).ShowDialog(_view);
     }
 

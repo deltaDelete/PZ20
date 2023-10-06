@@ -18,15 +18,15 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch">
         <StackPanel Spacing="8" Orientation="Horizontal">
-            <TextBlock Text="Фамилия" TextAlignment="End" Width="128"/>
+            <TextBlock Text="Фамилия" TextAlignment="End" VerticalAlignment="Center" Width="128"/>
             <TextBox Text="{Binding LastName}" HorizontalAlignment="Stretch" MinWidth="128" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" Spacing="8">
-            <TextBlock Text="Имя" TextAlignment="End" Width="128"/>
+            <TextBlock Text="Имя" TextAlignment="End" VerticalAlignment="Center" Width="128"/>
             <TextBox Text="{Binding FirstName}" HorizontalAlignment="Stretch" MinWidth="128" />
         </StackPanel>
         <StackPanel Spacing="8" Orientation="Horizontal">
-            <TextBlock Text="Пол" TextAlignment="End" Width="128"/>
+            <TextBlock Text="Пол" TextAlignment="End" VerticalAlignment="Center" Width="128"/>
             <ComboBox SelectedIndex="{Binding GenderId}" SelectedItem="{Binding Gender}"
                       MinWidth="128"
                       Name="GenderBox"

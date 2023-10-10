@@ -22,7 +22,8 @@
                     <ComboBoxItem>Пол</ComboBoxItem>
                 </ComboBox>
                 <CheckBox IsChecked="{Binding IsSortByDescending}">Сортировка по убыванию</CheckBox>
-                <Button Content="Добавить" Command="{Binding NewItemCommand}" />
+                <Button Content="Добавить" Command="{Binding NewItemCommand}" 
+                        Background="{StaticResource AccentButtonBackground}"/>
                 <Button Content="Изменить" Command="{Binding EditItemCommand}" CommandParameter="{Binding SelectedRow}" />
                 <Button Content="Удалить" Command="{Binding RemoveItemCommand}"
                         CommandParameter="{Binding SelectedRow}" />

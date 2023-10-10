@@ -39,8 +39,9 @@
             </ComboBox>
         </StackPanel>
         <StackPanel Spacing="8" Orientation="Horizontal">
-            <Button Content="Отмена" IsCancel="True" Click="CancelClick" MinWidth="128"/>
-            <Button Content="Сохранить" IsDefault="True" Click="ConfirmClick" MinWidth="128"/>
+            <Button Content="Отмена" IsCancel="True" Click="CancelClick" MinWidth="128" />
+            <Button Content="Сохранить" IsDefault="True" Click="ConfirmClick" MinWidth="128" 
+                    Background="{StaticResource AccentButtonBackground}"/>
         </StackPanel>
     </StackPanel>
 </Window>
